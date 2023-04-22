@@ -1,0 +1,102 @@
+[
+	{
+	 "productID": 0,
+	 "productName": "Хлеб",
+	 "productPrice": 45,
+	 "bigPrice": 76,
+	 "productImgURL": "./productsIMG/bread.png",
+	 "category": 4,
+	 "rating": 10,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 1,
+	 "productName": "Молоко",
+	 "productPrice": 63,
+	 "bigPrice": 95,
+	 "productImgURL": "./productsIMG/milk.png",
+	 "category": 3,
+	 "rating": 9,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 2,
+	 "productName": "Йогурт",
+	 "productPrice": 56,
+	 "bigPrice": 76,
+	 "productImgURL": "./productsIMG/egurt.png",
+	 "category": 3,
+	 "rating": 7,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 3,
+	 "productName": "Сосиска в тесте",
+	 "productPrice": 35,
+	 "bigPrice": 46,
+	 "productImgURL": "./productsIMG/sousage.jpg",
+	 "category": 4,
+	 "rating": 5,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 4,
+	 "productName": "Печенье овсяное",
+	 "productPrice": 76,
+	 "bigPrice": 128,
+	 "productImgURL": "./productsIMG/capcake.jpg",
+	 "category": 5,
+	 "rating": 7,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 5,
+	 "productName": "Печенье юбилейное",
+	 "productPrice": 55,
+	 "bigPrice": 79,
+	 "productImgURL": "./productsIMG/capcake2.jpg",
+	 "category": 5,
+	 "rating": 6,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 6,
+	 "productName": "Мясо говядина",
+	 "productPrice": 234,
+	 "bigPrice": 458,
+	 "productImgURL": "./productsIMG/meat.webp",
+	 "category": 1,
+	 "rating": 10,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 7,
+	 "productName": "Сыр",
+	 "productPrice": 145,
+	 "bigPrice": 210,
+	 "productImgURL": "./productsIMG/cheese.jpg",
+	 "category": 3,
+	 "rating": 8,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 8,
+	 "productName": "Масло сливочное",
+	 "productPrice": 136,
+	 "bigPrice": 158,
+	 "productImgURL": "./productsIMG/butter2.jpg",
+	 "category": 2,
+	 "rating": 9,
+	 "countOnCart": 0
+	},
+	{
+	 "productID": 9,
+	 "productName": "Масло подсолнечное",
+	 "productPrice": 98,
+	 "bigPrice": 125,
+	 "productImgURL": "./productsIMG/butter.webp",
+	 "category": 2,
+	 "rating": 6,
+	 "countOnCart": 0
+	}
+ ]
