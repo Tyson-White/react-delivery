@@ -2,33 +2,34 @@ import React from "react";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveCategory, setSortType } from "../../redux/slices/filterSlice";
+import {
+  setActiveCategory,
+  setSortType,
+  setFilters,
+} from "../../redux/slices/filterSlice";
+import { useNavigate } from "react-router-dom";
+import qs from "qs";
 
 // components
 import Header from "../../compopnent/Header";
 import Filter from "../../compopnent/Filter";
 import Product from "../../compopnent/Product";
-import Sort from "../../compopnent/Sort";
+import Sort, { sortList } from "../../compopnent/Sort";
 import Skeleton from "../../compopnent/Skeleton";
 import Pagination from "../../compopnent/Pagination";
 // components
 
 export default function Index({ onClickAdd }) {
+  const navigate = useNavigate();
   const [items, setItems] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
   const [searchValue, setSearchValue] = React.useState("");
 
-  const selectedPage = useSelector((state) => state.pagination.selectedPage);
+  const selectedPage = useSelector((state) => state.filter.selectedPage);
   const sortType = useSelector((state) => state.filter.sortType);
   const activeFilter = useSelector((state) => state.filter.activeCategory);
 
   const dispatch = useDispatch();
-
-  const search = searchValue ? `&search=${searchValue}` : "";
-  const filterCheck = activeFilter > 0 ? `category=${activeFilter}` : "";
-  const totalRef = `https://6428422a46fd35eb7c4efbb3.mockapi.io/items?&page=${
-    selectedPage + 1
-  }&limit=8&${`${filterCheck}&sortBy=${sortType.sort}&order=desc${search}`}`;
 
   const setValue = React.useCallback(
     debounce((value) => {
@@ -38,6 +39,26 @@ export default function Index({ onClickAdd }) {
   );
 
   React.useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+
+      const sortBy = sortList.find((obj) => obj.sort === params.sortBy);
+
+      dispatch(setFilters({ ...params, sortBy }));
+
+      console.log("selectedPage", selectedPage);
+      console.log("sortType", sortType);
+      console.log("activeFilter", activeFilter);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const search = searchValue ? `&search=${searchValue}` : "";
+    const filterCheck = activeFilter > 0 ? `category=${activeFilter}` : "";
+    const totalRef = `https://6428422a46fd35eb7c4efbb3.mockapi.io/items?&page=${
+      selectedPage + 1
+    }&limit=8&${`${filterCheck}&sortBy=${sortType.sort}&order=desc${search}`}`;
+
     setIsLoading(true);
 
     axios.get(totalRef).then((res) => {
@@ -45,6 +66,15 @@ export default function Index({ onClickAdd }) {
       setItems(res.data);
     });
   }, [activeFilter, sortType, searchValue, selectedPage]);
+
+  React.useEffect(() => {
+    const queryString = qs.stringify({
+      sortBy: sortType.sort,
+      activeFilter,
+      selectedPage,
+    });
+    navigate(`?${queryString}`);
+  }, [activeFilter, sortType, selectedPage]);
 
   const productRender =
     items &&

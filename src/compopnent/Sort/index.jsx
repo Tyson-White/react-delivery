@@ -1,48 +1,59 @@
-import React from 'react'
-import Styles from './Sort.module.scss'
+import React from "react";
+import Styles from "./Sort.module.scss";
+import { useSelector } from "react-redux";
 
-export default function Index({value, onClickFilter}) {
+export const sortList = [
+  { name: "популярности", sort: "rating" },
+  { name: "цене", sort: "productPrice" },
+  { name: "алфавиту", sort: "productName" },
+];
 
-	const sortList = [
-		{name: 'популярности', sort: 'rating'},
-		{name: 'цене', sort: 'productPrice'},
-		{name: 'алфавиту', sort: 'productName'}
-	]
+export default function Index({ value, onClickFilter }) {
+  const [activeSelSort, setActiveSelSort] = React.useState(false);
+  const activeSort = useSelector((state) => state.filter.sortType);
+  const sortRef = React.useRef();
+  React.useEffect(() => {
+    document.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.composedPath().includes(sortRef.current) === false) {
+        setActiveSelSort(false);
+      }
+    });
+  }, []);
 
-	const [activeSelSort, setActiveSelSort] = React.useState(false)
-	const sortRef = React.useRef()
-	React.useEffect(() => {
+  return (
+    <>
+      <div ref={sortRef} className={Styles.sort_wrapper}>
+        <div className={Styles.sort_selected}>
+          Сортировка по:{" "}
+          <span onClick={() => setActiveSelSort(!activeSelSort)}>
+            {activeSort.name}
+          </span>
+        </div>
 
-		document.addEventListener('click', e => {
-			e.preventDefault()
-			if (e.composedPath().includes(sortRef.current) === false)  {
-				setActiveSelSort(false)
-			}
-			console.log(sortRef.current)
-			
-		})
-	}, [])
-
-	return (
-		<>
-		<div ref={sortRef} className={Styles.sort_wrapper}>
-			<div className={Styles.sort_selected}>
-				Сортировка по: <span onClick={() => setActiveSelSort(!activeSelSort)}>{value.name}</span>
-			</div>
-
-			<div className={activeSelSort ? `${Styles.popup} ${Styles.showPopup}` : Styles.popup}>
-				<ul className={Styles.popup_list}>
-					{sortList.map((item, i) => (
-						<li 
-							key={i + item.name} 
-							className={value.name === item.name ? Styles.activeSort : undefined}
-							onClick={() => {onClickFilter(item); setActiveSelSort(false)}}>
-							{item.name}
-						</li>
-					)) }
-				</ul>
-			</div>
-		</div>
-		</>
-	)
+        <div
+          className={
+            activeSelSort ? `${Styles.popup} ${Styles.showPopup}` : Styles.popup
+          }
+        >
+          <ul className={Styles.popup_list}>
+            {sortList.map((item, i) => (
+              <li
+                key={i + item.name}
+                className={
+                  value.name === item.name ? Styles.activeSort : undefined
+                }
+                onClick={() => {
+                  onClickFilter(item);
+                  setActiveSelSort(false);
+                }}
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
 }
