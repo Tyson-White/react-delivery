@@ -8,11 +8,24 @@ export default function Index({value, onClickFilter}) {
 		{name: 'цене', sort: 'productPrice'},
 		{name: 'алфавиту', sort: 'productName'}
 	]
+
 	const [activeSelSort, setActiveSelSort] = React.useState(false)
+	const sortRef = React.useRef()
+	React.useEffect(() => {
+
+		document.addEventListener('click', e => {
+			e.preventDefault()
+			if (e.composedPath().includes(sortRef.current) === false)  {
+				setActiveSelSort(false)
+			}
+			console.log(sortRef.current)
+			
+		})
+	}, [])
 
 	return (
 		<>
-		<div className={Styles.sort_wrapper}>
+		<div ref={sortRef} className={Styles.sort_wrapper}>
 			<div className={Styles.sort_selected}>
 				Сортировка по: <span onClick={() => setActiveSelSort(!activeSelSort)}>{value.name}</span>
 			</div>

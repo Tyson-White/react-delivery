@@ -5,7 +5,7 @@ li {
 .filter {
 	display: flex;
 	margin: 40px 0;
-	width: 800px;
+	width: 900px;
 	justify-content: space-between;
 
 	.active {
@@ -16,7 +16,9 @@ li {
 	li {
 		padding: 10px 25px;
 		border-radius: 25px;
-		font-weight:600;
+		font-weight: 700;
+		letter-spacing: 1px;
+		color: #5F5F5F;
 		cursor: pointer;
 	}
 

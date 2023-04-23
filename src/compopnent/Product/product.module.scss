@@ -1,15 +1,16 @@
 .product {
-	width: 260px;
+	width: 230px;
 	height: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	text-align: center;
-	padding: 10px;
+	border: 1px solid #E0E0E0;
+	padding: 10px 7px 20px 7px;
 	border-radius: 15px;
-	-webkit-box-shadow: 2px 2px 13px 2px #a8a8a8;
-	-moz-box-shadow: 2px 2px 13px 2px #a8a8a8;
-	box-shadow: 2px 2px 13px 2px #a8a8a8;
+	-webkit-box-shadow: 0px 5px 4px 0px rgba(34, 60, 80, 0.2);
+		-moz-box-shadow: 0px 5px 4px 0px rgba(34, 60, 80, 0.2);
+		box-shadow: 0px 5px 4px 0px rgba(34, 60, 80, 0.2);
 
 	.sizeTitle {
 		font-weight: 600;
@@ -22,6 +23,8 @@
  		overflow: hidden;
 		display: flex;
 		margin-bottom: 10px;
+		border-bottom: 1px solid #DEDEDE;
+		padding-bottom: 10px;
 		img {
 			width: 100%;
  			object-fit: contain;
@@ -29,37 +32,48 @@
 	}
 
 	.product_name {
-		font-size: 24px;
+		font-size: 19px;
 		font-weight: 600;
+		color: #888888;
 	}
 
 	.select_size {
-		background-color: #fce2e2;
-		border-radius: 5px;
+		background-color: #DEDEDE;
+		padding: 0;
+		border-radius: 8px;
 		margin: 10px 0;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		border: 1px solid #cfcfcf;
 
 		.select_content {
-			width: 95%;
+			width: 98%;
 			margin: 0 auto;
-			padding: 5px 0;
+			padding: 0 5px;
 			display: flex;
 			justify-content: space-between;
 
 			.size {
 				cursor: pointer;
 				width: 43%;
-				padding: 5px;
-				border-radius: 5px;
+				padding: 13px 10px;
+				border-radius: 10px;
+				font-size: 14px;
+				letter-spacing: 1px;
+				font-weight: 400;
 			}
 
 		}
 	}
 
 	.selected {
-		background-color: #cf6a6a;
-		border: 1px solid #6666662f;
+		background-color: #9ADB73;
 		color: #fff;
 		font-weight: 600;
+		-webkit-box-shadow: 0px 3px 4px 0px rgba(34, 60, 80, 0.2);
+		-moz-box-shadow: 0px 3px 4px 0px rgba(34, 60, 80, 0.2);
+		box-shadow: 0px 3px 4px 0px rgba(34, 60, 80, 0.2);
 	}
 
 	.price_and_add {
@@ -68,26 +82,20 @@
 		align-items: center;
 		.price {
 			font-weight: 600;
-			font-size: 18px;
+			font-size: 20px;
+			color: #2C2C2C;
 		}
 
 		.add {
-			border: 2px solid #cf6a6a;
-			border-radius: 15px;
-			padding: 5px 10px;
-			color: #cf6a6a;
-			font-weight: 600;
-			user-select: none;
-			display: flex;
+			background-color: #9ADB73;
+			border: none;
+			border-radius: 10px;
+			padding: 10px 27px;
+			cursor: pointer;
 
 			&:hover {
-				cursor: pointer;
-				background-color: #cf6a6a;
-				color: #fff;
-
-				.count {
-					color: #fff
-				}
+				transform: scale(1.05);
+				transition: 0.2s;
 			}
 		}
 	}

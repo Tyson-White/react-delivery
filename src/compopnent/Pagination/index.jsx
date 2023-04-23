@@ -1,7 +1,9 @@
 import React from 'react'
 import Styles from './Pagination.module.scss'
+import { setSelectedPage, setNextPage, setBackPage } from '../../redux/slices/paginationSlice';
+import { useDispatch } from 'react-redux';
 
-export default function Pagination({pageCount, selectedPage, setSelectedPage}) {
+export default function Pagination({pageCount, selectedPage}) {
 
 	const createLi = () => {
 		const list = []
@@ -15,15 +17,17 @@ export default function Pagination({pageCount, selectedPage, setSelectedPage}) {
 		return list
 	}
 
+	const dispatch = useDispatch()
+
 	return (
 		<div className={Styles.root}>
-			<button onClick={() => setSelectedPage(selectedPage - 1)} className={Styles.arrow_left}>{`<`}</button>
+			<button onClick={() => dispatch(setBackPage())} className={Styles.arrow_left}>{`<`}</button>
 			<ul className={Styles.pages}>
 				{createLi().map((item, i) => (
-					<li key={i} onClick={() => setSelectedPage(i)} className={selectedPage === i ? Styles.selected : undefined}>{item}</li>
+					<li key={i} onClick={() => dispatch(setSelectedPage(i))} className={selectedPage === i ? Styles.selected : undefined}>{item}</li>
 				))}
 			</ul>
-			<button onClick={() => setSelectedPage(selectedPage + 1)} className={Styles.arrow_right}>{`>`}</button>
+			<button onClick={() => dispatch(setNextPage())} className={Styles.arrow_right}>{`>`}</button>
 		</div>
 	)
 }

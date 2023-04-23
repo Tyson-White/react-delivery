@@ -1,12 +1,14 @@
 .sort_wrapper {
 	font-size: 16px;
 	font-weight: 600;
-	width: 300px;
+	width: 320px;
 	position: relative;
+	font-size: 19px;
 	span {
-		color: #cf6a6a;
-		border-bottom: 1px dotted #cf6a6a;
+		color: #9ADB73;
+		border-bottom: 1px dotted #9ADB73;
 		cursor: pointer;
+		font-size: 19px;
 	}
 }
 
@@ -30,7 +32,7 @@
 }
 
 .activeSort {
-	color: #cf6a6a;
+	color: #9ADB73;
 }
 
 .showPopup {
