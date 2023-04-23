@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import { useSelector, useDispatch } from "react-redux";
+import { setProductsList } from "../../redux/slices/productsSlice";
 import {
   setActiveCategory,
   setSortType,
@@ -21,7 +22,7 @@ import Pagination from "../../compopnent/Pagination";
 
 export default function Index({ onClickAdd }) {
   const navigate = useNavigate();
-  const [items, setItems] = React.useState();
+  const items = useSelector((state) => state.products.productsList);
   const [isLoading, setIsLoading] = React.useState(true);
   const [searchValue, setSearchValue] = React.useState("");
 
@@ -45,10 +46,6 @@ export default function Index({ onClickAdd }) {
       const sortBy = sortList.find((obj) => obj.sort === params.sortBy);
 
       dispatch(setFilters({ ...params, sortBy }));
-
-      console.log("selectedPage", selectedPage);
-      console.log("sortType", sortType);
-      console.log("activeFilter", activeFilter);
     }
   }, []);
 
@@ -63,7 +60,7 @@ export default function Index({ onClickAdd }) {
 
     axios.get(totalRef).then((res) => {
       setIsLoading(false);
-      setItems(res.data);
+      dispatch(setProductsList(res.data));
     });
   }, [activeFilter, sortType, searchValue, selectedPage]);
 

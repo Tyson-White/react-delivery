@@ -82,6 +82,11 @@
 			height: 72px;
 			background: #589529;
 			border-radius: 15px;
+
+			&:hover {
+				background: #64ac2d;
+				transition: 0.2s;
+			}
 			.cart{
 				display: flex;
 				align-items: center;
