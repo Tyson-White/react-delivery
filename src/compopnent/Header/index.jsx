@@ -69,9 +69,8 @@ export default function Index({ searchValue, setSearchValue }) {
               <div className={Styles.close} onClick={clearSearchValue}></div>
             )}
           </div>
-
-          <div className={Styles.right_side}>
-            <Link to="/cart">
+          <Link to="/cart">
+            <div className={Styles.right_side}>
               <div className={Styles.cart}>
                 <div className={Styles.cart_elems}>
                   <div className={Styles.total_price}>{price} р</div>
@@ -114,8 +113,8 @@ export default function Index({ searchValue, setSearchValue }) {
                   <div className={Styles.count}>{productsCount}</div>
                 </div>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     </>

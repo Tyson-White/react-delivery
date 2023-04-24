@@ -10,6 +10,7 @@ import {
 } from "../../redux/slices/productsSlice";
 import { setCount } from "../../redux/slices/productsSlice";
 import { Link } from "react-router-dom";
+import PopUp from "../../compopnent/Popup";
 
 // img
 import del from "../../assets/icons/delete-1-svgrepo-com.svg";
@@ -22,12 +23,26 @@ import Header from "../../compopnent/Header";
 export default function Index(props) {
   const cartItems = useSelector((state) => state.products.cartList);
   const dispatch = useDispatch();
+  const [popUp, setPopUp] = React.useState(false);
+
+  const showPopUp = () => {
+    setPopUp(true);
+
+    setTimeout(() => {
+      setPopUp(false);
+    }, 2000);
+  };
 
   const price = useSelector((state) => state.products.totalPrice);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
       <div className="wrapper">
+        <PopUp active={popUp} />
         <Header />
 
         <div className={Styles.cart_content}>
@@ -38,6 +53,55 @@ export default function Index(props) {
               className={Styles.clear_cart}
             >
               Очистить корзину
+              <svg
+                width="25px"
+                height="25px"
+                viewBox="0 -0.5 21 21"
+                version="1.1"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <title>delete [#589529]</title>{" "}
+                  <desc>Created with Sketch.</desc> <defs> </defs>{" "}
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    strokeWidth="1"
+                    fill="none"
+                    fillRule="evenodd"
+                  >
+                    {" "}
+                    <g
+                      id="Dribbble-Light-Preview"
+                      transform="translate(-179.000000, -360.000000)"
+                      fill="#589529"
+                    >
+                      {" "}
+                      <g
+                        id="icons"
+                        transform="translate(56.000000, 160.000000)"
+                      >
+                        {" "}
+                        <path
+                          d="M130.35,216 L132.45,216 L132.45,208 L130.35,208 L130.35,216 Z M134.55,216 L136.65,216 L136.65,208 L134.55,208 L134.55,216 Z M128.25,218 L138.75,218 L138.75,206 L128.25,206 L128.25,218 Z M130.35,204 L136.65,204 L136.65,202 L130.35,202 L130.35,204 Z M138.75,204 L138.75,200 L128.25,200 L128.25,204 L123,204 L123,206 L126.15,206 L126.15,220 L140.85,220 L140.85,206 L144,206 L144,204 L138.75,204 Z"
+                          id="delete-[#589529]"
+                        >
+                          {" "}
+                        </path>{" "}
+                      </g>{" "}
+                    </g>{" "}
+                  </g>{" "}
+                </g>
+              </svg>
             </div>
           </div>
 
@@ -78,7 +142,10 @@ export default function Index(props) {
                       </button>
                     </div>
                     <div
-                      onClick={() => dispatch(removeCartItem(item))}
+                      onClick={() => {
+                        dispatch(removeCartItem(item));
+                        showPopUp();
+                      }}
                       className={Styles.delete_product}
                     >
                       <svg

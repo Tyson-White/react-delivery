@@ -47,6 +47,8 @@ export default function Index({ onClickAdd }) {
 
       dispatch(setFilters({ ...params, sortBy }));
     }
+
+    window.scrollTo(0, 0);
   }, []);
 
   React.useEffect(() => {

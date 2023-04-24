@@ -1,4 +1,6 @@
 .cart_content {
+	position: relative;
+	overflow: hidden;
 	width: 80%;
 	margin: 40px auto;
 	.title {
@@ -16,10 +18,21 @@
 	.clear_cart {
 		color: #589529;
 		border: 1px solid #589529;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		height: 43px;
+		svg {
+			margin-left: 20px;
+			width: 20px;
+		}
 
 		&:hover {
-			background-color: #699646;
 			color: #fff;
+			g {
+				fill: #fff;
+			}
+			background-color: #589529;
 		}
 	}
 }
