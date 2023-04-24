@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import logo from "../../assets/icons/logo.svg";
-import cart from "../../assets/icons/cart.svg";
 
 export default function Index({ searchValue, setSearchValue }) {
   const cartItems = useSelector((state) => state.products.cartList);
 
   const price = useSelector((state) => state.products.totalPrice);
+  const productsCount = useSelector((state) => state.products.productsCount);
 
   const searchRef = React.useRef();
 
@@ -111,7 +111,7 @@ export default function Index({ searchValue, setSearchValue }) {
                     </svg>
                   </div>
 
-                  <div className={Styles.count}>{cartItems.length}</div>
+                  <div className={Styles.count}>{productsCount}</div>
                 </div>
               </div>
             </Link>

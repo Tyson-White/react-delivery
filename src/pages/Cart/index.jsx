@@ -2,6 +2,7 @@ import React from "react";
 
 import Styles from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { setCount } from "../../redux/slices/productsSlice";
 import { Link } from "react-router-dom";
 
 // img
@@ -18,7 +19,6 @@ export default function Index(props) {
   const dispatch = useDispatch();
 
   const price = useSelector((state) => state.products.totalPrice);
-  console.log(price);
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function Index(props) {
 
           <div className={Styles.added_products}>
             {cartItems &&
-              cartItems.map((item) => (
+              cartItems.map((item, i) => (
                 <div className={Styles.added_product}>
                   <div className={Styles.product_info}>
                     <div className={Styles.product_img}>
@@ -56,7 +56,7 @@ export default function Index(props) {
                   <div className={Styles.product_actions}>
                     <div className={Styles.add_product}>
                       <button className={Styles.minus}>-</button>
-                      <div className={Styles.current}>2</div>
+                      <div className={Styles.current}>{item.countOnCart}</div>
                       <button className={Styles.plus}>+</button>
                     </div>
                     <div className={Styles.delete_product}>
@@ -67,12 +67,12 @@ export default function Index(props) {
                         version="1.1"
                         fill="#000000"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
                         <g
                           id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
 
                         <g id="SVGRepo_iconCarrier">
@@ -82,9 +82,9 @@ export default function Index(props) {
                           <g
                             id="Page-1"
                             stroke="none"
-                            stroke-width="1"
+                            strokeWidth="1"
                             fill="none"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                           >
                             {" "}
                             <g

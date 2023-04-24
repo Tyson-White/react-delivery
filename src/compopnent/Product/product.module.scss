@@ -89,8 +89,12 @@
 		.add {
 			background-color: #9ADB73;
 			border: none;
+			color: #DEDEDE;
+			font-weight: 700;	
+			font-size: 20px;
 			border-radius: 10px;
-			padding: 10px 27px;
+			height: 40px;
+			width: 60px;
 			cursor: pointer;
 
 			&:hover {
@@ -99,12 +103,4 @@
 			}
 		}
 	}
-}
-
-.count {
-	border-radius: 50%;
-	width: 20px;
-	height: 20px;
-	letter-spacing: 1px;
-	color: #cf6a6a;
 }
