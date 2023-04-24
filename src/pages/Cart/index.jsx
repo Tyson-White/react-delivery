@@ -2,6 +2,12 @@ import React from "react";
 
 import Styles from "./Cart.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  setCartItems,
+  removeCartItem,
+  clearCart,
+  removeOneItem,
+} from "../../redux/slices/productsSlice";
 import { setCount } from "../../redux/slices/productsSlice";
 import { Link } from "react-router-dom";
 
@@ -11,7 +17,6 @@ import del from "../../assets/icons/delete-1-svgrepo-com.svg";
 
 // components
 import Header from "../../compopnent/Header";
-import { clearCart } from "../../redux/slices/productsSlice";
 // components
 
 export default function Index(props) {
@@ -39,7 +44,10 @@ export default function Index(props) {
           <div className={Styles.added_products}>
             {cartItems &&
               cartItems.map((item, i) => (
-                <div className={Styles.added_product}>
+                <div
+                  key={i + item.productName}
+                  className={Styles.added_product}
+                >
                   <div className={Styles.product_info}>
                     <div className={Styles.product_img}>
                       <img src={item.productImgURL} width={100} alt="" />
@@ -50,16 +58,29 @@ export default function Index(props) {
                   </div>
 
                   <div className={Styles.product_price}>
-                    {item.productPrice} руб.
+                    {item.productPrice * item.countOnCart} руб.
                   </div>
 
                   <div className={Styles.product_actions}>
                     <div className={Styles.add_product}>
-                      <button className={Styles.minus}>-</button>
+                      <button
+                        onClick={() => dispatch(removeOneItem(item))}
+                        className={Styles.minus}
+                      >
+                        -
+                      </button>
                       <div className={Styles.current}>{item.countOnCart}</div>
-                      <button className={Styles.plus}>+</button>
+                      <button
+                        onClick={() => dispatch(setCartItems(item))}
+                        className={Styles.plus}
+                      >
+                        +
+                      </button>
                     </div>
-                    <div className={Styles.delete_product}>
+                    <div
+                      onClick={() => dispatch(removeCartItem(item))}
+                      className={Styles.delete_product}
+                    >
                       <svg
                         width="25px"
                         height="25px"
@@ -118,7 +139,10 @@ export default function Index(props) {
           <div className={Styles.cart_footer}>
             <div className={Styles.cart_info}>
               <div className={Styles.count_products}>
-                Всего товаров: <span>{cartItems.length}</span>
+                Всего товаров:{" "}
+                <span>
+                  {useSelector((state) => state.products.productsCount)}
+                </span>
               </div>
               <div className={Styles.total_price}>
                 Сумма заказа: <span>{price} руб</span>

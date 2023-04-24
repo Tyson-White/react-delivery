@@ -22,20 +22,33 @@ const productsSlice = createSlice({
 			}
 			state.productsCount += 1
 			state.totalPrice = 0
-			state.cartList.forEach(obj => state.totalPrice +=  obj.productPrice * (obj.countOnCart + 1))
-		},
-		setCount(state, action) {
-			state.
-			state.cartList[action.payload.index].countOnCart = action.payload.count
+			state.cartList.forEach(obj => state.totalPrice +=  obj.productPrice * obj.countOnCart)
 		},
 		clearCart(state) {
 			state.productsCount = 0
 			state.totalPrice = 0
 			state.cartList = []
+		},
+		removeCartItem(state, action) {
+			state.cartList = state.cartList.filter(obj => obj.productName !== action.payload.productName)
+			state.productsCount -= action.payload.countOnCart
+			state.totalPrice -= action.payload.productPrice * action.payload.countOnCart
+		},
+		removeOneItem(state, action) {
+			const index = state.cartList.findIndex((i) => i.productName == action.payload.productName)		
+			if (state.cartList[index].countOnCart > 1) {
+				state.cartList[index].countOnCart -= 1
+				state.totalPrice -= action.payload.productPrice
+			} else {
+					state.cartList = state.cartList.filter(obj => obj.productName !== action.payload.productName)
+					state.totalPrice -= action.payload.productPrice * action.payload.countOnCart
+	
+			}
+			state.productsCount -= 1
 		}
 	}
 })
 
-export const { setProductsList, setCartItems, clearCart, setCount } = productsSlice.actions
+export const { setProductsList, setCartItems, clearCart, setCount, removeCartItem, removeOneItem } = productsSlice.actions
 
 export default productsSlice.reducer
