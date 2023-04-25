@@ -1,0 +1,28 @@
+.content {
+    text-align: center;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    margin: 0 auto;
+    font-size: 100px;
+    button {
+        width: 200px;
+        height: 60px;
+        border-radius: 10px;
+        border: 1px solid rgb(150, 150, 150);
+        margin: 0 auto;
+        background-color: #fff;
+        color: rgb(150, 150, 150);
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+}
+
+.text {
+    font-size: 50px;
+}
+
