@@ -116,8 +116,14 @@ export default function Index(props) {
                     <div className={Styles.product_img}>
                       <img src={item.productImgURL} width={100} alt="" />
                     </div>
-                    <div className={Styles.product_name}>
+                    
+                    <div className={Styles.product_description}>
+                      <div className={Styles.product_name}>
                       {item.productName}
+                      </div>
+                      <div className={Styles.product_size}>
+                        Размер: {item.productSize}
+                      </div>
                     </div>
                   </div>
 

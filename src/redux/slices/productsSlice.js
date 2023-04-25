@@ -14,15 +14,16 @@ const productsSlice = createSlice({
 		},
 		setCartItems(state, action) {
 			const index = state.cartList.findIndex((i) => i.productName == action.payload.productName)
-			console.log(state.writable)
 			if (state.cartList.find(obj => obj.productName === action.payload.productName)) {
 				state.cartList[index].countOnCart += 1
 			} else {
 				state.cartList.push({...action.payload, countOnCart: 1})
 			}
+			
 			state.productsCount += 1
 			state.totalPrice = 0
 			state.cartList.forEach(obj => state.totalPrice +=  obj.productPrice * obj.countOnCart)
+			state.cartList[index] = {...state.cartList[index], productSize: action.payload.productSize}
 		},
 		clearCart(state) {
 			state.productsCount = 0

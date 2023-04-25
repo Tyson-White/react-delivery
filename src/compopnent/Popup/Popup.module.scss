@@ -1,7 +1,7 @@
 .popUp {
 	width: 250px;
 	height: 100px;
-	background-color: rgba(96, 211, 67, 0.548);
+	background-color: rgba(96, 211, 67, 0.432);
 	color: #2b2b2b;
 	border-radius: 20px;
 	position: absolute;
@@ -9,8 +9,8 @@
 	display: inline-flex;
 	flex-direction: column;
 	justify-content: center;
-	bottom: -100%;
-	right: 0;
+	top: -100%;
+	right: 830px;
 	transition: 0.3s;
 }
 .popUp_content {
@@ -18,7 +18,7 @@
 }
 
 .active {
-	bottom: 20px;
-	right: 30px;
+	top: 140px;
+	right: 830px;
 	transition: 0.3s;
 }

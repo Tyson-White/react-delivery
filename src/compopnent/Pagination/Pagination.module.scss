@@ -5,13 +5,15 @@
 	justify-content: space-between;
 	
 	button {
+		position: relative;
 		border: 2px solid #9ADB73;
 		color: #9ADB73;
 		font-size: 15px;
 		font-weight: 600;
 		height: 40px;
 		width: 40px;	
-		border-radius: 20px;
+		border-radius: 10px;
+		background-color: #fff;
 		cursor: pointer;
 	}
 
@@ -33,10 +35,12 @@
 		  font-weight: 600;
 			height: 40px;
 			width: 40px;
-			border-radius: 20px;
+			border-radius: 10px;
 			text-align: center;
 			line-height: 39px;
 		}
 	}
+
+	
 
 }

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCartItems } from "../../redux/slices/productsSlice";
 
 export default function Index(props) {
-  const [size, setSize] = React.useState("small");
+  const [size, setSize] = React.useState("маленький");
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = React.useState(false);
 
@@ -29,12 +29,12 @@ export default function Index(props) {
             <div className={Styles.select_content}>
               <div
                 className={
-                  size === "small"
+                  size === "маленький"
                     ? `${Styles.size} ${Styles.selected}`
                     : Styles.size
                 }
                 onClick={() => {
-                  changeSize("small");
+                  changeSize("маленький");
                 }}
               >
                 маленький
@@ -42,12 +42,12 @@ export default function Index(props) {
 
               <div
                 className={
-                  size === "big"
+                  size === "большой"
                     ? `${Styles.size} ${Styles.selected}`
                     : Styles.size
                 }
                 onClick={() => {
-                  changeSize("big");
+                  changeSize("большой");
                 }}
               >
                 большой
@@ -57,12 +57,17 @@ export default function Index(props) {
         </div>
         <div className={Styles.price_and_add}>
           <div className={Styles.price}>
-            {size === "big" ? props.bigPrice : props.productPrice} руб.
+            {size === "большой" ? props.bigPrice : props.productPrice} руб.
           </div>
           <button
             className={Styles.add}
             onClick={() => {
-              dispatch(setCartItems(props));
+              if (size === 'маленький') {
+                dispatch(setCartItems({...props, productSize: size}));
+              } else {
+                dispatch(setCartItems({...props, productPrice: props.bigPrice, productSize: size}));
+              }
+              
               setIsAdded(true);
             }}
           >
