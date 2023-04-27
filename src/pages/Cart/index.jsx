@@ -8,13 +8,8 @@ import {
   clearCart,
   removeOneItem,
 } from "../../redux/slices/productsSlice";
-import { setCount } from "../../redux/slices/productsSlice";
 import { Link } from "react-router-dom";
 import PopUp from "../../compopnent/Popup";
-
-// img
-import del from "../../assets/icons/delete-1-svgrepo-com.svg";
-// img
 
 // components
 import Header from "../../compopnent/Header";
@@ -116,10 +111,10 @@ export default function Index(props) {
                     <div className={Styles.product_img}>
                       <img src={item.productImgURL} width={100} alt="" />
                     </div>
-                    
+
                     <div className={Styles.product_description}>
                       <div className={Styles.product_name}>
-                      {item.productName}
+                        {item.productName}
                       </div>
                       <div className={Styles.product_size}>
                         Размер: {item.productSize}

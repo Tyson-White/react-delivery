@@ -51,19 +51,22 @@ export default function Index({ onClickAdd }) {
     window.scrollTo(0, 0);
   }, []);
 
-  React.useEffect(() => {
+  const fetchProducts = async () => {
     const search = searchValue ? `&search=${searchValue}` : "";
     const filterCheck = activeFilter > 0 ? `&category=${activeFilter}` : "";
     const totalRef = `https://6428422a46fd35eb7c4efbb3.mockapi.io/items?&page=${
       selectedPage + 1
     }&limit=8${`${filterCheck}&sortBy=${sortType.sort}&order=desc${search}`}`;
-
     setIsLoading(true);
 
-    axios.get(totalRef).then((res) => {
-      setIsLoading(false);
-      dispatch(setProductsList(res.data));
-    });
+    const res = await axios.get(totalRef);
+
+    setIsLoading(false);
+    dispatch(setProductsList(res.data));
+  };
+
+  React.useEffect(() => {
+    fetchProducts();
   }, [activeFilter, sortType, searchValue, selectedPage]);
 
   React.useEffect(() => {
