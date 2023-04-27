@@ -8,6 +8,7 @@ import Manepage from "./pages/Manepage";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import CartEmpty from "./pages/CartEmpty";
+import Login from "./pages/Login";
 // pages
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           ></Route>
           <Route path="/cart" element={cartItems.length > 0 ? <Cart cartItems={cartItems} /> : <CartEmpty/>} ></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/login" element={<Login/>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

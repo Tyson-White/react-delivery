@@ -147,6 +147,22 @@
 
 		}
 
+		.login {
+			padding: 0 30px;
+			height: 72px;
+			background: #589529;
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			color: #fff;
+			font-weight: 400;
+			&:hover {
+				cursor: pointer;
+				background: #64ac2d;
+				transition: 0.2s;
+			}
+		}
+
 	}
 	
 }
