@@ -56,8 +56,22 @@
 	display: flex;
 	align-items: center;
 	width: 300px;
+
+	@media(max-width: 900px) {
+		& {
+			width: 220px;
+		}
+	}
 	.product_description {
 		margin-left: 20px;
+	}
+
+	.product_img {
+		@media(max-width: 900px) {
+			img {
+				width: 50px;
+			}
+		}
 	}
 
 	.product_name {

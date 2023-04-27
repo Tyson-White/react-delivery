@@ -8,6 +8,22 @@ li {
 	width: 900px;
 	justify-content: space-between;
 
+	@media(max-width: 970px) {
+		& {
+			width: 400px;
+			overflow: scroll;
+			align-items: center;
+		}
+	}
+
+	@media(max-width: 370px) {
+		& {
+			width: 300px;
+			overflow: scroll;
+			align-items: center;
+		}
+	}
+
 	.active {
 		background-color: #444444;
 		color: #fff;
@@ -20,6 +36,7 @@ li {
 		letter-spacing: 1px;
 		color: #5F5F5F;
 		cursor: pointer;
+
 	}
 
 	

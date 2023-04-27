@@ -53,10 +53,10 @@ export default function Index({ onClickAdd }) {
 
   React.useEffect(() => {
     const search = searchValue ? `&search=${searchValue}` : "";
-    const filterCheck = activeFilter > 0 ? `category=${activeFilter}` : "";
+    const filterCheck = activeFilter > 0 ? `&category=${activeFilter}` : "";
     const totalRef = `https://6428422a46fd35eb7c4efbb3.mockapi.io/items?&page=${
       selectedPage + 1
-    }&limit=8&${`${filterCheck}&sortBy=${sortType.sort}&order=desc${search}`}`;
+    }&limit=8${`${filterCheck}&sortBy=${sortType.sort}&order=desc${search}`}`;
 
     setIsLoading(true);
 

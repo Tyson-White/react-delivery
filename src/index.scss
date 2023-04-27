@@ -46,6 +46,31 @@ a {
 	justify-items: center;
 }
 
+@media(max-width: 1260px) {
+	.main {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.subHeader {
+		flex-direction: column;
+		text-align: center;
+	}
+	
+}
+
+@media(max-width: 860px) {
+	.main {
+		text-align: center;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media(max-width: 570px) {
+	.main {
+		text-align: center;
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
 .subHeader {
 	display: flex;
 	align-items: center;

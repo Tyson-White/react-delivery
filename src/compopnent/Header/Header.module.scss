@@ -1,6 +1,26 @@
+@media(max-width: 1015px) {
+	.header_content {
+		flex-direction: column;
+	}
+}
+
 .header {
 	height: 122px;
 	background-color: #9ADB73;
+
+	@media(max-width: 1015px) {
+		& {
+			height: 240px;
+			padding: 20px 0;
+		}
+	}
+
+	@media(max-width: 470px) {
+		& {
+			height: 310px;
+			padding: 20px 0;
+		}
+	}
 
 	.header_content{
 		height: 100%;
@@ -16,6 +36,10 @@
 			margin-top: auto;
 			column-gap: 30px;
 
+			@media(max-width: 470px) {
+				flex-direction: column;
+			}
+
 			.title_name {
 				
 				.name {
@@ -26,7 +50,8 @@
 				}
 
 				.description {
-					font-size: 18px;
+					font-size: 16px;
+					
 					font-weight: 700;
 					color: rgba(132, 132, 132, 0.75);
 				}
